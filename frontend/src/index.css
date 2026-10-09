@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/inter';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-medical-primary: var(--medical-primary);
+  --color-medical-primary-dark: var(--medical-primary-dark);
+  --color-medical-primary-light: var(--medical-primary-light);
+  --color-medical-accent: var(--medical-accent);
+  --color-medical-accent-light: var(--medical-accent-light);
+  --color-medical-text: var(--medical-text);
+  --color-medical-secondary-text: var(--medical-secondary-text);
+  --color-medical-muted-text: var(--medical-muted-text);
+  --color-medical-page: var(--medical-page);
+  --color-medical-surface: var(--medical-surface);
+  --color-medical-soft: var(--medical-soft);
+  --color-medical-border: var(--medical-border);
+  --color-medical-border-dark: var(--medical-border-dark);
+  --color-medical-success: var(--medical-success);
+  --color-medical-warning: var(--medical-warning);
+  --color-medical-error: var(--medical-error);
+  --color-medical-info: var(--medical-info);
+  --color-medical-emergency: var(--medical-emergency);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+}
+
+:root {
+  color-scheme: light;
+  --medical-primary: #0f766e;
+  --medical-primary-dark: #115e59;
+  --medical-primary-light: #ccfbf1;
+  --medical-accent: #0ea5a4;
+  --medical-accent-light: #ecfeff;
+  --medical-text: #172033;
+  --medical-secondary-text: #475569;
+  --medical-muted-text: #64748b;
+  --medical-page: #f8fafc;
+  --medical-surface: #ffffff;
+  --medical-soft: #f1f5f9;
+  --medical-border: #e2e8f0;
+  --medical-border-dark: #cbd5e1;
+  --medical-success: #16a34a;
+  --medical-warning: #d97706;
+  --medical-error: #dc2626;
+  --medical-info: #2563eb;
+  --medical-emergency: #dc2626;
+
+  --background: var(--medical-page);
+  --foreground: var(--medical-text);
+  --card: var(--medical-surface);
+  --card-foreground: var(--medical-text);
+  --popover: var(--medical-surface);
+  --popover-foreground: var(--medical-text);
+  --primary: var(--medical-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--medical-soft);
+  --secondary-foreground: var(--medical-text);
+  --muted: var(--medical-soft);
+  --muted-foreground: var(--medical-muted-text);
+  --accent: var(--medical-accent-light);
+  --accent-foreground: var(--medical-primary-dark);
+  --destructive: var(--medical-error);
+  --border: var(--medical-border);
+  --input: var(--medical-border);
+  --ring: var(--medical-primary);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth font-sans;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    color: var(--primary-foreground);
+    background: var(--primary);
+  }
+}
+
+@layer components {
+  .page-container {
+    width: min(100% - clamp(2rem, 6vw, 6rem), 80rem);
+    margin-inline: auto;
+  }
+
+  .content-section {
+    padding-block: clamp(1.5rem, 4vw, 3rem);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  [data-slot='card'] {
+    transition:
+      translate 200ms ease,
+      box-shadow 200ms ease;
+  }
+
+  [data-slot='card']:hover {
+    translate: 0 -2px;
+    box-shadow:
+      0 10px 18px -12px rgb(15 23 42 / 0.25),
+      0 4px 8px -6px rgb(15 23 42 / 0.16);
+  }
+
+  [data-slot='button']:not(:disabled):hover {
+    translate: 0 -1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

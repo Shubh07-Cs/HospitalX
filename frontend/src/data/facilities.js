@@ -1,0 +1,38 @@
+export const facilities = [
+  {
+    id: "diagnostics-example",
+    slug: "diagnostics",
+    name: "Diagnostic services",
+    summary: "Example facility",
+    icon: "scan",
+    image: null,
+    contentStatus: "sample",
+  },
+  {
+    id: "patient-rooms-example",
+    slug: "patient-rooms",
+    name: "Patient rooms",
+    summary: "Example facility",
+    icon: "bed",
+    image: null,
+    contentStatus: "sample",
+  },
+  {
+    id: "surgical-suites-example",
+    slug: "surgical-suites",
+    name: "Surgical suites",
+    summary: "Example facility",
+    icon: "hospital",
+    image: null,
+    contentStatus: "sample",
+  },
+  {
+    id: "critical-care-example",
+    slug: "critical-care",
+    name: "Critical care",
+    summary: "Example facility",
+    icon: "heart-pulse",
+    image: null,
+    contentStatus: "sample",
+  },
+]

@@ -1,0 +1,32 @@
+export const packages = [
+  {
+    id: "wellness-package-example",
+    slug: "wellness-package",
+    name: "Wellness screening",
+    summary: "Example package",
+    includedTests: [],
+    price: null,
+    priceApproved: false,
+    contentStatus: "sample",
+  },
+  {
+    id: "family-package-example",
+    slug: "family-package",
+    name: "Family health",
+    summary: "Example package",
+    includedTests: [],
+    price: null,
+    priceApproved: false,
+    contentStatus: "sample",
+  },
+  {
+    id: "heart-package-example",
+    slug: "heart-package",
+    name: "Heart health",
+    summary: "Example package",
+    includedTests: [],
+    price: null,
+    priceApproved: false,
+    contentStatus: "sample",
+  },
+]
