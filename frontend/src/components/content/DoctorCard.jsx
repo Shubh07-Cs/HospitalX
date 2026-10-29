@@ -9,9 +9,17 @@ function DoctorCard({ doctor, headingLevel = 2 }) {
   return (
     <Card className="h-full">
       <CardContent className="flex h-full flex-col items-start pt-5">
-        <div className="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-medical-soft text-medical-muted-text">
-          <Stethoscope aria-hidden="true" className="size-9" />
-        </div>
+        {doctor.image ? (
+          <img
+            src={doctor.image}
+            alt={`Portrait of ${doctor.name}`}
+            className="aspect-[4/3] w-full rounded-md object-cover object-top"
+          />
+        ) : (
+          <div className="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-medical-soft text-medical-muted-text">
+            <Stethoscope aria-hidden="true" className="size-9" />
+          </div>
+        )}
         <Badge variant="secondary" className="mt-4">
           Illustrative profile
         </Badge>

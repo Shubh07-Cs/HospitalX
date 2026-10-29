@@ -37,6 +37,22 @@ function ServicesPage() {
         title="Services and treatments"
         description="Browse the illustrative service categories below. Avdhuth Hospital must confirm its available services and treatment information before publication."
       />
+      <Section className="border-b border-border bg-white py-8">
+        <Container>
+          <div className="grid gap-4 md:grid-cols-[1fr_1fr_1fr]">
+            {[
+              ['Personalised guidance', 'Understand which care pathway may be relevant to your concern.'],
+              ['Connected specialties', 'Move between services and departments with clearer information.'],
+              ['Plan with confidence', 'Confirm scope, availability, preparation, and fees with the hospital.'],
+            ].map(([title, description]) => (
+              <div key={title} className="rounded-lg border border-border bg-medical-soft/40 p-5">
+                <h2 className="font-semibold">{title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
       {services.length ? (
         categories.map((category) => {
           const categoryServices = services.filter((service) => service.category === category)
@@ -62,9 +78,17 @@ function ServicesPage() {
                     return (
                       <Card key={service.id} className="h-full">
                         <CardHeader>
-                          <span className="flex size-11 items-center justify-center rounded-md bg-medical-primary-light text-primary">
-                            <Icon aria-hidden="true" className="size-5" />
-                          </span>
+                          {service.image ? (
+                            <img
+                              src={service.image}
+                              alt={`${service.name} service`}
+                              className="aspect-[16/9] w-full rounded-md object-cover"
+                            />
+                          ) : (
+                            <span className="flex size-11 items-center justify-center rounded-md bg-medical-primary-light text-primary">
+                              <Icon aria-hidden="true" className="size-5" />
+                            </span>
+                          )}
                           <Badge variant="secondary" className="mt-3 w-fit">
                             Sample service
                           </Badge>

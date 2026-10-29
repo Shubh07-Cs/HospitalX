@@ -252,6 +252,22 @@ function PatientResourcesPage() {
             </div>
           </div>
 
+          <div className="mb-8 grid gap-4 sm:grid-cols-3">
+            {[
+              ['Plan', 'Confirm appointment, documents, and preparation needs.'],
+              ['Arrive', 'Allow time for reception, registration, and wayfinding.'],
+              ['Follow up', 'Save reports, instructions, prescriptions, and next-step dates.'],
+            ].map(([title, description], index) => (
+              <Card key={title} className="overflow-hidden">
+                <CardContent className="pt-5">
+                  <span className="text-xs font-bold uppercase tracking-wide text-primary">Step {index + 1}</span>
+                  <h2 className="mt-2 font-semibold">{title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
           <nav
             aria-label="Patient resource sections"
             className="mb-8 flex gap-2 overflow-x-auto pb-2"

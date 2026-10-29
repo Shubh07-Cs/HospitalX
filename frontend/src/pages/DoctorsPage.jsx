@@ -50,6 +50,23 @@ function DoctorsPage() {
       />
       <Section>
         <Container>
+          <div className="mb-8 grid gap-4 sm:grid-cols-3">
+            {[
+              ['1', 'Choose a specialty', 'Search by clinician name, department, or area of expertise.'],
+              ['2', 'Review the profile', 'Check the specialty and sample experience information shown.'],
+              ['3', 'Plan your visit', 'Contact the hospital to confirm availability and appointment steps.'],
+            ].map(([number, title, description]) => (
+              <Card key={number}>
+                <CardContent className="pt-5">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-medical-primary-light text-sm font-bold text-primary">
+                    {number}
+                  </span>
+                  <h2 className="mt-4 font-semibold">{title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
           <div className="mb-8 rounded-lg border border-border bg-white p-4 sm:p-5">
             <div className="grid gap-4 md:grid-cols-[1fr_0.75fr]">
               <div>
@@ -173,9 +190,17 @@ function DoctorDetailPage() {
         <Container className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
           <Card className="h-fit">
             <CardContent className="flex flex-col items-start pt-5">
-              <div className="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-medical-soft text-medical-muted-text">
-                <Stethoscope aria-hidden="true" className="size-12" />
-              </div>
+              {doctor.image ? (
+                <img
+                  src={doctor.image}
+                  alt={`Portrait of ${doctor.name}`}
+                  className="aspect-[4/3] w-full rounded-md object-cover object-top"
+                />
+              ) : (
+                <div className="flex aspect-[4/3] w-full items-center justify-center rounded-md bg-medical-soft text-medical-muted-text">
+                  <Stethoscope aria-hidden="true" className="size-12" />
+                </div>
+              )}
               <Badge variant="secondary" className="mt-4">
                 Sample profile — not approved
               </Badge>

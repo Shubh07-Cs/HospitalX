@@ -42,6 +42,20 @@ function DepartmentsPage() {
       />
       <Section>
         <Container>
+          <div className="mb-8 grid gap-4 rounded-lg border border-medical-primary-light bg-medical-primary-light/30 p-5 sm:grid-cols-3 sm:p-6">
+            <div>
+              <p className="text-2xl font-semibold text-primary">4</p>
+              <p className="mt-1 text-sm text-medical-secondary-text">Care specialties represented</p>
+            </div>
+            <div>
+              <p className="text-2xl font-semibold text-primary">One team</p>
+              <p className="mt-1 text-sm text-medical-secondary-text">Coordinated support across departments</p>
+            </div>
+            <div>
+              <p className="text-2xl font-semibold text-primary">Your needs</p>
+              <p className="mt-1 text-sm text-medical-secondary-text">Care guidance tailored to your concern</p>
+            </div>
+          </div>
           {departments.length ? (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {departments.map((department) => {
@@ -51,9 +65,17 @@ function DepartmentsPage() {
                 return (
                   <Card key={department.id} className="h-full">
                     <CardContent className="flex h-full flex-col items-start pt-5">
-                      <span className="flex size-11 items-center justify-center rounded-md bg-medical-primary-light text-primary">
-                        <Icon aria-hidden="true" className="size-5" />
-                      </span>
+                      {department.image ? (
+                        <img
+                          src={department.image}
+                          alt={`${department.name} care`}
+                          className="aspect-[16/9] w-full rounded-md object-cover"
+                        />
+                      ) : (
+                        <span className="flex size-11 items-center justify-center rounded-md bg-medical-primary-light text-primary">
+                          <Icon aria-hidden="true" className="size-5" />
+                        </span>
+                      )}
                       <Badge variant="outline" className="mt-4">
                         Illustrative department
                       </Badge>
@@ -61,6 +83,16 @@ function DepartmentsPage() {
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                         {department.description}
                       </p>
+                      {department.highlights?.length ? (
+                        <ul className="mt-4 space-y-1.5 text-sm text-medical-secondary-text">
+                          {department.highlights.slice(0, 3).map((highlight) => (
+                            <li key={highlight} className="flex items-start gap-2">
+                              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                              {highlight}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                       <p className="mt-4 text-xs text-muted-foreground">
                         {doctorCount} sample {doctorCount === 1 ? 'doctor' : 'doctors'} ·{' '}
                         {serviceCount} sample {serviceCount === 1 ? 'service' : 'services'}
